@@ -13,16 +13,26 @@ import { ApiService } from './service/api.service';
 
 
 export class AppComponent {
-  title = 'app-new';
+  title = 'Send Request';
 
   data: any;
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit() {
+  // GET
+  reqGetApi() {
     this.apiService.getData().subscribe((resp) => {
       this.data = resp;
       console.log(this.data);
     });
   }
+
+  // POST
+  reqPostApi() {
+    this.apiService.postData().subscribe((resp) => {
+      this.data = resp;
+      console.log(this.data);
+    });
+  }
+
 }
