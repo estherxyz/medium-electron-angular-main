@@ -23,13 +23,16 @@ export class GenaiService {
     })
   }
 
-  // set request body
-  private reqBody = {
+
+  // POST request
+  postData(payload: any) {
+    // set request body
+    const reqBody = {
       "model": "google/gemini-2.0-flash-thinking-exp:free",
       "messages": [
           {
               "role": "user",
-              "content": "what should i do today?please answer in 15 words."
+              "content": payload.question + ". please answer in 15 words."
           }
       ],
       "top_p": 1,
@@ -38,11 +41,9 @@ export class GenaiService {
       "presence_penalty": 0,
       "repetition_penalty": 1,
       "top_k": 0
-  }
+    }
 
-  // POST request
-  postData() {
-    return this.http.post(this.apiUrl, this.reqBody, this.reqHeader)
+    return this.http.post(this.apiUrl, reqBody, this.reqHeader)
   }
 
 }
