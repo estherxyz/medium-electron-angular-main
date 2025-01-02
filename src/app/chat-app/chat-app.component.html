@@ -1,0 +1,30 @@
+<main class="main">  
+
+    <!-- Chatbox-->
+    <mat-card>
+      <mat-card-content>
+        <div class="chat-container">
+          <div class="chat-history">
+            <div *ngFor="let chat of chatHistory" [ngClass]="chat.sender">
+              <strong>{{ chat.sender === 'user' ? 'You: ' : 'Bot: ' }}</strong>
+              <span>{{ chat.message }}</span>
+            </div>
+          </div>
+        
+          <div class="chat-input">
+            <input
+              [(ngModel)]="userMessage"
+              placeholder="Type your message here"
+              (keyup.enter)="sendMessage()"
+            />
+            <button (click)="sendMessage()">Send</button>
+          </div>
+        </div>
+  
+      </mat-card-content>
+    </mat-card>
+  
+  </main>
+  
+  <router-outlet />
+  

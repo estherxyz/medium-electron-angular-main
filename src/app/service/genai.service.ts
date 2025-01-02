@@ -15,7 +15,6 @@ export class GenaiService {
 
   // set request header
   private apiKey = import.meta.env.NG_APP_API_KEY_OPENROUTER;
-
   private reqHeader = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -43,6 +42,7 @@ export class GenaiService {
       "top_k": 0
     }
 
+    // POST request
     return this.http.post(this.apiUrl, reqBody, this.reqHeader)
   }
 
