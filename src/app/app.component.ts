@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ApiService } from './service/api.service';
+import { GenaiService } from './service/genai.service';
 
 
 @Component({
@@ -17,22 +18,30 @@ export class AppComponent {
 
   data: any;
 
-  constructor(private apiService: ApiService) {}
-
-  // GET
-  reqGetApi() {
-    this.apiService.getData().subscribe((resp) => {
-      this.data = resp;
-      console.log(this.data);
-    });
-  }
-
-  // POST
+  constructor(private genaiService: GenaiService) {}
   reqPostApi() {
-    this.apiService.postData().subscribe((resp) => {
+    this.genaiService.postData().subscribe((resp) => {
       this.data = resp;
       console.log(this.data);
     });
   }
+
+
+  // constructor(private apiService: ApiService) {}
+  // // GET
+  // reqGetApi() {
+  //   this.apiService.getData().subscribe((resp) => {
+  //     this.data = resp;
+  //     console.log(this.data);
+  //   });
+  // }
+
+  // // POST
+  // reqPostApi() {
+  //   this.apiService.postData().subscribe((resp) => {
+  //     this.data = resp;
+  //     console.log(this.data);
+  //   });
+  // }
 
 }

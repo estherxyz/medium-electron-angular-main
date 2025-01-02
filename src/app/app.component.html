@@ -3,9 +3,10 @@
     {{title}} HELLO WORLD
   </div>
 
-  <div>{{data.title}}</div>
-
   <button (click)="reqPostApi()">POST request</button>
+
+  <div>{{data.model}}</div>
+  <div>{{data.choices[0].message.content}}</div>
 
 </main>
 

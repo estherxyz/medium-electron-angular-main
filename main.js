@@ -13,7 +13,10 @@ const createWindow = () => {
     }
   });
 
+  // load angular render file
   mainWindow.loadFile(path.join(__dirname, 'dist/app-new/browser/index.html'));
+  // open developer tool
+  mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
