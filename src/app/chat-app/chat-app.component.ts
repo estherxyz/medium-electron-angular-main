@@ -36,12 +36,12 @@ export class ChatAppComponent {
   constructor(private genaiService: GenaiService) {}
 
   // variable
-  userMessage = ''; // user input
-  chatHistory: { sender: string, message: string }[] = []; // chat history
+  public userMessage = ''; // user input
+  public chatHistory: { sender: string, message: string }[] = []; // chat history
 
   // chat api
   sendMessage(): void {
-    const payload = { question: this.userMessage.trim() };
+    var payload = { question: this.userMessage.trim() };
 
     if (this.userMessage.trim()) {
       // user input, push to array
@@ -50,13 +50,20 @@ export class ChatAppComponent {
       // POST request
       this.genaiService.postData(payload).subscribe({
         next: (response) => {
+          var botMessage = "";
+          
+          if ( 'error' in response ){
+            botMessage = '[Error] ' + (response as any).error.message;
+          } else {
+            botMessage = (response as any).choices[0].message.content;
+          }
           // api response, push to array
-          const botMessage = (response as any).choices[0].message.content;
           this.chatHistory.push({ sender: 'bot', message: botMessage });
         },
+        
         error: (error) => {
-          // error control, push to array
           console.error('Error sending message:', error);
+          // error control, push to array
           this.chatHistory.push({ sender: 'bot', message: '[Error] Could not get a response.' });
         }
       });
