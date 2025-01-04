@@ -6,7 +6,8 @@
         <div class="chat-container">
           <div class="chat-history">
             <div *ngFor="let chat of chatHistory" [ngClass]="chat.sender">
-              <strong>{{ chat.sender === 'user' ? 'You: ' : 'Bot: ' }}</strong>
+              <!-- <strong>{{ chat.sender === 'user' ? 'You: ' : 'Bot: ' }}</strong> -->
+              <strong>{{ getSender(chat) }}</strong>
               <span>{{ chat.message }}</span>
             </div>
           </div>

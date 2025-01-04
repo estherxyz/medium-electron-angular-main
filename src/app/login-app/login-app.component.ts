@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { UserStatusService } from '../service/user-status.service';
+
 
 @Component({
   selector: 'app-login-app',
@@ -29,18 +31,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 export class LoginAppComponent {
   title = 'Login App with Routing';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router, 
+    private userStatus: UserStatusService
+  ) {}
 
   // variable
   public userNumber = '';
 
   // after enter, redirect page
   navigate(): void {
-    console.log('[Info] userNumber: ' + this.userNumber);
+    // console.log('[Info] userNumber: ' + this.userNumber);
 
     if (this.userNumber.trim()) {
       console.log('[Info] redirect page.');
-      this.router.navigate(['/chat']);
+
+      this.userStatus.setIsLogin(true);
+      this.userStatus.setUserNumber(this.userNumber);
+      
+      this.router.navigate(['/chat']);  // redirect
     } else {
       console.log('[Error] userNumber is empty.');
     }
