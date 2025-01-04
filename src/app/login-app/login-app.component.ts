@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -29,7 +29,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 export class LoginAppComponent {
   title = 'Login App with Routing';
 
+  constructor(private router: Router) {}
+
   // variable
   public userNumber = '';
+
+  // after enter, redirect page
+  navigate(): void {
+    console.log('[Info] userNumber: ' + this.userNumber);
+
+    if (this.userNumber.trim()) {
+      console.log('[Info] redirect page.');
+      this.router.navigate(['/chat']);
+    } else {
+      console.log('[Error] userNumber is empty.');
+    }
+  }
 
 }

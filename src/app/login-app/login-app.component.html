@@ -2,17 +2,19 @@
 
     <div class="login-container">
         <div class="login-left">
-          <h2>Login! 👋</h2>
-          <!-- <button class="btn btn-google">Sign in with Google</button>
-          <button class="btn btn-apple">Sign in with Apple</button> -->
+            <h2>Login! 👋</h2>
+            <!-- <button class="btn btn-google">Sign in with Google</button>
+            <button class="btn btn-apple">Sign in with Apple</button> -->
 
-          <p>Enter your Employee Number</p>
-          <form>
-            <label>Employee Number</label>
-            <input [(ngModel)]="userNumber" id="user-number" placeholder="005xxxxx">
-            
-            <button type="submit" class="btn btn-signin">Enter</button>
-          </form>
+            <p>Enter your Employee Number</p>
+            <!-- <label>Employee Number</label> -->
+            <input 
+                [(ngModel)]="userNumber" 
+                id="user-number" 
+                name="userNumber" 
+                placeholder="005xxxxx" 
+            />
+            <button (click)="navigate()" class="btn btn-signin">Enter</button>
         </div>
 
         <div class="login-right">
