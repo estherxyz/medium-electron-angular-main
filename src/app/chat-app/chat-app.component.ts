@@ -12,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
-
 @Component({
   selector: 'app-chat-app',
   standalone: true,
@@ -60,7 +59,7 @@ export class ChatAppComponent {
           // api response, push to array
           this.chatHistory.push({ sender: 'bot', message: botMessage });
         },
-        
+
         error: (error) => {
           console.error('Error sending message:', error);
           // error control, push to array
