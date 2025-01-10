@@ -1,0 +1,21 @@
+<main class="main">  
+    <!-- Chatbox by websocket-->
+    <mat-card>
+      <mat-card-content>
+        <div class="chat-container">
+          <h3>WebSocket Demo</h3>
+
+          <ul>
+            <li *ngFor="let msg of webMessages">{{ msg }}</li>
+          </ul>
+          <input [(ngModel)]="webMessage" placeholder="Type a message" />
+          <button (click)="sendMessage()">Send</button>
+        </div>
+  
+      </mat-card-content>
+    </mat-card>
+  
+</main>
+
+<router-outlet />
+  
